@@ -3,4 +3,4 @@ project(RoomReservationSys)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(RoomReservationSys main.cpp Identity.cpp Identity.h Student.cpp Student.h Teacher.cpp Teacher.h Manager.cpp Manager.h)
+add_executable(RoomReservationSys main.cpp Identity.cpp Identity.h Student.cpp Student.h Teacher.cpp Teacher.h Manager.cpp Manager.h globalFile.h)
