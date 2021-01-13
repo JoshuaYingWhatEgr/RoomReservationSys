@@ -38,7 +38,7 @@ int main() {
             case 3:
 
                 break;
-            case 0:
+            case 0: //退出系统
                 cout << "欢迎您下次使用!" << endl;
 
                 return 0;
