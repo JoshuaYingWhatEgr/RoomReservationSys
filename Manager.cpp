@@ -6,6 +6,7 @@
 #include "Manager.h"
 
 #include "globalFile.h"
+#include "ComputerRoom.h"
 
 Manager::Manager() {
 
@@ -20,6 +21,25 @@ Manager::Manager(string name, string password) {
 
     //初始化容器
     this->initVector();
+
+    ifstream ifs;
+
+    ifs.open(COMPUTER_ROOM_FILE, ios::in);
+
+    if (!ifs.is_open()) {
+
+        cout << "机房文件不存在" << endl;
+        return;
+    }
+
+    ComputerRoom c;
+
+    while (ifs >> c.m_cid && ifs >> c.m_Max) {
+
+        vCRoom.push_back(c);
+    }
+
+    ifs.close();
 
 }
 
@@ -178,6 +198,13 @@ void Manager::searchAccout() {
 //查看机房信息
 void Manager::searchComputerRoom() {
 
+    cout << "机房信息如下" << endl;
+
+    for (vector<ComputerRoom>::iterator it = vCRoom.begin();
+         it != vCRoom.end(); it++) {
+
+        cout << "机房编号:" << it->m_cid << "机器数量:" << it->m_Max << endl;
+    }
 }
 
 //清空预约记录

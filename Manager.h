@@ -6,6 +6,7 @@
 #include "Identity.h"
 #include "Student.h"
 #include "Teacher.h"
+#include "ComputerRoom.h"
 
 #ifndef ROOMRESERVATIONSYS_MANAGER_H
 #define ROOMRESERVATIONSYS_MANAGER_H
@@ -41,6 +42,9 @@ public:
 
     //教师容器
     vector<Teacher> vTea;
+
+    //机房信息
+    vector<ComputerRoom> vCRoom;
 
     //检测是否有重复
     bool checkRepeat(int id, int type); // true表示有重复 false反之
