@@ -13,6 +13,41 @@
 
 using namespace std;
 
+//进入管理员子菜单界面
+void managerMenu(Identity *manager) {
+
+    while (true) {
+
+        //调用管理员的子菜单
+        manager->operMenu();
+
+        Manager *man = (Manager *) manager;
+
+        //接收用户的选择
+        int select = 0;
+
+        cin >> select;
+
+        if (select == 1) { //添加账号
+
+            man->addAccount();
+        } else if (select == 2) { //查看账号
+
+            man->searchAccout();
+        } else if (select == 3) { //查看机房信息
+
+            man->searchComputerRoom();
+        } else if (select == 4) { //清空预约
+
+            man->clearOrder();
+        } else { //注销账号
+            cout << "注销成功!" << endl;
+
+            delete manager;
+        }
+    }
+}
+
 void loginIn(string fileName, int type) {
 
     Identity *person = NULL;
@@ -48,11 +83,11 @@ void loginIn(string fileName, int type) {
 
     }
 
-    cout << "请输入您的用户名";
+    cout << "请输入您的用户名:";
 
     cin >> name;
 
-    cout << "请输入您的密码";
+    cout << "请输入您的密码:";
 
     cin >> password;
 
@@ -76,6 +111,9 @@ void loginIn(string fileName, int type) {
 
                 person = new Student(id, name, password);
 
+//                system("pause");
+//
+//                system("cls");
                 return;
             }
 
@@ -99,6 +137,9 @@ void loginIn(string fileName, int type) {
 
                 person = new Teacher(id, name, password);
 
+//                system("pause");
+//                system("cls");
+
                 return;
             }
 
@@ -119,6 +160,8 @@ void loginIn(string fileName, int type) {
 
                 person = new Manager(name, password);
 
+                managerMenu(person);
+
                 return;
             }
 
@@ -126,7 +169,7 @@ void loginIn(string fileName, int type) {
 
     }
 
-    cout << "您的信息输入有误,登录失败!";
+    cout << "您的信息输入有误,登录失败!" << endl;
 
     return;
 }

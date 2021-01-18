@@ -11,6 +11,7 @@ using namespace std;
 
 class Identity {
 
+public:
     //操作菜单
     virtual void operMenu() = 0;
 
