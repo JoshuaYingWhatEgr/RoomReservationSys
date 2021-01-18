@@ -128,6 +128,51 @@ void Manager::addAccount() {
 //查看账号
 void Manager::searchAccout() {
 
+    cout << "请选择您需要查看的内容" << endl;
+
+    cout << "1.学生信息" << endl;
+
+    cout << "2.老师信息" << endl;
+
+    int select = 0;
+
+    cin >> select;
+
+    ifstream ifs;
+
+    if (select == 1) { //查看学生信息
+
+        ifs.open(STUDENT_FILE, ios::in);
+
+        if (!ifs.is_open()) {
+
+            cout << "学生文件不存在" << endl;
+            return;
+        }
+
+        for (vector<Student>::iterator it = vStu.begin();
+             it != vStu.end(); it++) {
+
+            cout << "学号:" << it->m_id << "姓名:" << it->m_Name << "密码:" << it->m_Psd << endl;
+
+        }
+    } else {
+
+        ifs.open(TEACHER_FILE, ios::in);
+
+        if (!ifs.is_open()) {
+
+            cout << "教师文件不存在" << endl;
+            return;
+        }
+
+        for (vector<Teacher>::iterator it = vTea.begin();
+             it != vTea.end(); it++) {
+
+            cout << "职工号:" << it->m_id << "姓名:" << it->m_Name << "密码:" << it->m_Psd << endl;
+
+        }
+    }
 }
 
 //查看机房信息
