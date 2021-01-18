@@ -18,6 +18,9 @@ Manager::Manager(string name, string password) {
 
     this->m_Psd = password;
 
+    //初始化容器
+    this->initVector();
+
 }
 
 void Manager::operMenu() {
@@ -113,4 +116,57 @@ void Manager::searchComputerRoom() {
 //清空预约记录
 void Manager::clearOrder() {
 
+}
+
+//初始化容器
+void Manager::initVector() {
+
+    //读取学生信息
+    ifstream ifs;
+
+    ifs.open(STUDENT_FILE, ios::in);
+
+    if (!ifs.is_open()) {
+
+        cout << "学生文件不存在" << endl;
+        return;
+    }
+
+    //清空容器
+    vStu.clear();
+
+    vTea.clear();
+
+    Student s;
+
+    while (ifs >> s.m_id && ifs >> s.m_Name && ifs >> s.m_Psd) {
+
+        vStu.push_back(s);
+
+    }
+
+    cout << "学生数量为:" + vStu.size() << endl;
+
+    ifs.close();
+
+    //读取老师的文件xinxi
+
+    ifs.open(TEACHER_FILE, ios::in);
+
+    if (!ifs.is_open()) {
+
+        cout << "老师文件信息不存在" << endl;
+        return;
+    }
+
+    Teacher t;
+
+    while (ifs >> t.m_id && ifs >> t.m_Name && ifs >> t.m_Psd) {
+
+        vTea.push_back(t);
+    }
+
+    cout << "老师数量:" << vTea.size() << endl;
+
+    ifs.close();
 }

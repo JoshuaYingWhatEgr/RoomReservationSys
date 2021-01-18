@@ -2,7 +2,10 @@
 // Created by JoshuaYingWhat on 2021/1/13.
 //
 
+#include <vector>
 #include "Identity.h"
+#include "Student.h"
+#include "Teacher.h"
 
 #ifndef ROOMRESERVATIONSYS_MANAGER_H
 #define ROOMRESERVATIONSYS_MANAGER_H
@@ -29,6 +32,15 @@ public:
 
     //清空预约记录
     void clearOrder();
+
+    //初始化容器
+    void initVector();
+
+    //学生容器
+    vector<Student> vStu;
+
+    //教师容器
+    vector<Teacher> vTea;
 };
 
 
