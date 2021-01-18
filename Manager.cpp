@@ -120,6 +120,9 @@ void Manager::addAccount() {
     cout << "添加成功" << endl;
 
     ofs.close();
+
+    //将新的账号添加到容器中 解决检测重复账号问题
+    initVector();
 }
 
 //查看账号
