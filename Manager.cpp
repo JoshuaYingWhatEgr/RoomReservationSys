@@ -56,6 +56,9 @@ void Manager::addAccount() {
 
     string tips;
 
+    //错误提示
+    string err_tips;
+
     ofstream ofs;
 
     int select = 0;
@@ -68,11 +71,14 @@ void Manager::addAccount() {
 
         tips = "请输入学号:  ";
 
+        err_tips = "学号重复,请重新输入";
     } else if (select == 2) {
 
         file_name = TEACHER_FILE;
 
         tips = "请输入职工号：  ";
+
+        err_tips = "职工号重复,请重新输入";
     }
 
     //打开文件
@@ -86,7 +92,20 @@ void Manager::addAccount() {
 
     cout << tips << endl;
 
-    cin >> id;
+    //检查添加账号是否重复
+    while (true) {
+
+        cin >> id;
+
+        bool ret = this->checkRepeat(id, select);
+
+        if (ret) {
+            cout << err_tips << endl;
+        } else {
+            break;
+        }
+    }
+
 
     cout << "请输入姓名:  " << endl;
 
@@ -145,7 +164,7 @@ void Manager::initVector() {
 
     }
 
-    cout << "学生数量为:" + vStu.size() << endl;
+    cout << "学生数量为:" << vStu.size() << endl;
 
     ifs.close();
 
@@ -169,4 +188,33 @@ void Manager::initVector() {
     cout << "老师数量:" << vTea.size() << endl;
 
     ifs.close();
+}
+
+//检查是否有重复
+bool Manager::checkRepeat(int id, int type) {
+
+    if (type == 1) { //检查学生 文件是否有重复
+
+        for (vector<Student>::iterator it = vStu.begin();
+             it != vStu.end(); it++) {
+
+
+            if (id == it->m_id) {
+                return true;
+            }
+        }
+
+    } else if (type == 2) {
+
+        for (vector<Teacher>::iterator it = vTea.begin();
+             it != vTea.end(); it++) {
+
+
+            if (id == it->m_id) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

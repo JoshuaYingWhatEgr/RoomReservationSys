@@ -41,6 +41,9 @@ public:
 
     //教师容器
     vector<Teacher> vTea;
+
+    //检测是否有重复
+    bool checkRepeat(int id, int type); // true表示有重复 false反之
 };
 
 
