@@ -210,6 +210,11 @@ void Manager::searchComputerRoom() {
 //清空预约记录
 void Manager::clearOrder() {
 
+    ofstream ofs(ORDER_FILE, ios::trunc);
+
+    ofs.clear();
+
+    cout << "预约记录已经清空" << endl;
 }
 
 //初始化容器
