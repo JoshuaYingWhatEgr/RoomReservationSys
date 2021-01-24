@@ -305,6 +305,12 @@ void Student::cancelOrder() {
 
     }
 
+    if (v.size() == 0) {
+
+        cout << "没有可以取消的预约记录！！！" << endl;
+        return;
+    }
+
     cout << "请输入你要取消的预约记录" << endl;
 
     int select = 0;
