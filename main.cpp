@@ -148,10 +148,6 @@ void loginIn(string fileName, int type) {
 
                 person = new Student(id, name, password);
 
-//                system("pause");
-//
-//                system("cls");
-
                 studentMenu(person);
                 return;
             }
@@ -175,9 +171,6 @@ void loginIn(string fileName, int type) {
                 cout << "登录成功" << endl;
 
                 person = new Teacher(id, name, password);
-
-//                system("pause");
-//                system("cls");
 
                 return;
             }
