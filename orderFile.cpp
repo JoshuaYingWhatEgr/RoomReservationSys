@@ -15,7 +15,7 @@ orderFile::orderFile() {
 
     ifs.open(ORDER_FILE, ios::in);
 
-    string date;//日期
+    string data;//日期
 
     string interval;//预约时间段
 
@@ -33,20 +33,20 @@ orderFile::orderFile() {
         return;
     }
 
-    while (ifs >> date && ifs >> interval && ifs >> stu_id && ifs >> stu_name
+    while (ifs >> data && ifs >> interval && ifs >> stu_id && ifs >> stu_name
            && ifs >> room_id && ifs >> status) {
 
         string key, value;
 
         map<string, string> m;
 
-        int pos = date.find(":");
+        int pos = data.find(":");
 
         if (pos != -1) {
 
-            key = date.substr(0, pos);
+            key = data.substr(0, pos);
 
-            value = date.substr(pos + 1, date.size() - pos);
+            value = data.substr(pos + 1, data.size() - pos);
 
             m.insert(make_pair(key, value));
         }
@@ -122,4 +122,18 @@ void orderFile::updateOrder() {
         return;
     }
 
+    ofstream ofs(ORDER_FILE, ios::out | ios::trunc);
+
+    for (int i = 0; i < this->order_size; i++) {
+
+
+        ofs << "data:" << this->m_orderData[i]["data"] << " ";
+        ofs << "interval:" << this->m_orderData[i]["interval"] << " ";
+        ofs << "stuId:" << this->m_orderData[i]["stuId"] << " ";
+        ofs << "stuName:" << this->m_orderData[i]["stuName"] << " ";
+        ofs << "roomId:" << this->m_orderData[i]["roomId"] << " ";
+        ofs << "status:" << this->m_orderData[i]["status"] << endl;
+    }
+
+    ofs.close();
 }
