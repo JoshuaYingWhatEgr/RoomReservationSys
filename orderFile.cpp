@@ -134,8 +134,6 @@ void orderFile::updateOrder() {
         ofs << "roomId:" << this->m_orderData[i]["roomId"] << " ";
         ofs << "status:" << this->m_orderData[i]["status"] << endl;
     }
-
-    cout << "更新预约数据成功" << endl;
-
+    
     ofs.close();
 }

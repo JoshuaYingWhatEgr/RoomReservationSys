@@ -85,6 +85,32 @@ void studentMenu(Identity *student) {
 
 }
 
+void teacherMenu(Identity *teacher) {
+
+
+    teacher->operMenu();
+
+    Teacher *tech = (Teacher *) teacher;
+
+    int select = 0;
+
+    cin >> select;
+
+    if (select == 1) {
+
+        tech->searchAllOrder();
+    } else if (select == 2) {
+
+        tech->validOrder();
+    } else {
+
+        cout << "退出成功" << endl;
+
+        delete teacher;
+    }
+}
+
+
 void loginIn(string fileName, int type) {
 
     Identity *person = NULL;
@@ -172,6 +198,7 @@ void loginIn(string fileName, int type) {
 
                 person = new Teacher(id, name, password);
 
+                teacherMenu(person);
                 return;
             }
 
