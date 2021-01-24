@@ -6,7 +6,11 @@ using namespace std;
 
 #include "Identity.h"
 
+#include "ComputerRoom.h"
+
 #include <iostream>
+
+#include <vector>
 
 #ifndef ROOMRESERVATIONSYS_STUDENT_H
 #define ROOMRESERVATIONSYS_STUDENT_H
@@ -42,6 +46,9 @@ public :
 
     //密码
     string m_psd;
+
+    //机房容器类
+    vector<ComputerRoom> vCom;
 };
 
 
