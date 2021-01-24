@@ -9,6 +9,8 @@
 
 #include "globalFile.h"
 
+#include "orderFile.h"
+
 Student::Student() {
 
 }
@@ -149,7 +151,7 @@ void Student::applyOrder() {
 
     ofs << "roomId:" << room << " ";
 
-    ofs << "status" << 1 << endl;
+    ofs << "status:" << 1 << endl;
 
     ofs.close();
 }
@@ -157,6 +159,21 @@ void Student::applyOrder() {
 
 //查看自身预约
 void Student::searchMyOrder() {
+
+    cout << "请输入学号:" << endl;
+
+    //获取预约数据
+    orderFile order;
+
+    int id;
+
+//    while (true) {
+//
+//        cin >> id;
+//
+//        for (map<int, map<string, string>>::iterator it = order.m_orderData.begin())
+//
+//    }
 
 }
 
