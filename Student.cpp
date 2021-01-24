@@ -160,25 +160,93 @@ void Student::applyOrder() {
 //查看自身预约
 void Student::searchMyOrder() {
 
-    cout << "请输入学号:" << endl;
-
     //获取预约数据
-    orderFile order;
+    orderFile of;
 
-    int id;
+    if (of.order_size == 0) {
 
-//    while (true) {
-//
-//        cin >> id;
-//
-//        for (map<int, map<string, string>>::iterator it = order.m_orderData.begin())
-//
-//    }
+        cout << "还没有预约记录" << endl;
+        return;
+    }
+
+    for (int i = 0; i < of.order_size; i++) {
+
+        if (atoi(of.m_orderData[i]["stuId"].c_str()) == this->m_id) {//如果预约数据中的学号和我们当前 账号的学号相同
+
+            cout << "预约日期: 周" << of.m_orderData[i]["data"] << endl;
+
+            cout << "时间段: " << (of.m_orderData[i]["interval"] == "1" ? "上午" : "下午") << endl;
+
+            cout << "学生ID号: " << of.m_orderData[i]["stuId"] << endl;
+
+            cout << "学生姓名: " << of.m_orderData[i]["stuName"] << endl;
+
+            cout << "机房: " << of.m_orderData[i]["roomId"] << endl;
+
+            string status = "状态: "; //0 取消预约 1 审核中 2 已预约 -1 预约失败
+
+            if (of.m_orderData[i]["status"] == "1") {
+
+                status += "审核中";
+            } else if (of.m_orderData[i]["status"] == "2") {
+
+                status += "已预约";
+            } else if (of.m_orderData[i]["status"] == "0") {
+
+                status += "取消预约";
+            } else {
+
+                status += "预约失败";
+            }
+
+            cout << "预约状态: " << of.m_orderData[i]["status"] << endl;
+        }
+    }
 
 }
 
 //显示所有人的预约
 void Student::searchAllOrder() {
+
+    //获取预约数据
+    orderFile of;
+
+    if (of.order_size == 0) {
+
+        cout << "还没有预约记录" << endl;
+        return;
+    }
+
+    for (int i = 0; i < of.order_size; i++) {
+
+        cout << "预约日期: 周" << of.m_orderData[i]["data"] << endl;
+
+        cout << "时间段: " << (of.m_orderData[i]["interval"] == "1" ? "上午" : "下午") << endl;
+
+        cout << "学生ID号: " << of.m_orderData[i]["stuId"] << endl;
+
+        cout << "学生姓名: " << of.m_orderData[i]["stuName"] << endl;
+
+        cout << "机房: " << of.m_orderData[i]["roomId"] << endl;
+
+        string status = "状态: "; //0 取消预约 1 审核中 2 已预约 -1 预约失败
+
+        if (of.m_orderData[i]["status"] == "1") {
+
+            status += "审核中";
+        } else if (of.m_orderData[i]["status"] == "2") {
+
+            status += "已预约";
+        } else if (of.m_orderData[i]["status"] == "0") {
+
+            status += "取消预约";
+        } else {
+
+            status += "预约失败";
+        }
+
+        cout << "预约状态: " << of.m_orderData[i]["status"] << endl;
+    }
 
 }
 
