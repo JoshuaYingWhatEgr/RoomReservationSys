@@ -35,7 +35,7 @@ public:
     void clearOrder();
 
     //初始化容器
-    void initVector();
+    void init_vector();
 
     //学生容器
     vector<Student> vStu;

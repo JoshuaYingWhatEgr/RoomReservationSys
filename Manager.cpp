@@ -20,7 +20,7 @@ Manager::Manager(string name, string password) {
     this->m_Psd = password;
 
     //初始化容器
-    this->initVector();
+    this->init_vector();
 
     ifstream ifs;
 
@@ -142,7 +142,7 @@ void Manager::addAccount() {
     ofs.close();
 
     //将新的账号添加到容器中 解决检测重复账号问题
-    initVector();
+    init_vector();
 }
 
 //查看账号
@@ -218,7 +218,7 @@ void Manager::clearOrder() {
 }
 
 //初始化容器
-void Manager::initVector() {
+void Manager::init_vector() {
 
     //读取学生信息
     ifstream ifs;

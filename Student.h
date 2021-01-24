@@ -36,6 +36,12 @@ public :
 
     //学生学号
     int m_id;
+
+    //姓名
+    string m_name;
+
+    //密码
+    string m_psd;
 };
 
 

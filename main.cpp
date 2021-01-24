@@ -48,6 +48,43 @@ void managerMenu(Identity *manager) {
     }
 }
 
+void studentMenu(Identity *student) {
+
+    while (true) {
+
+        //调用学生的子菜单
+        student->operMenu();
+
+        Student *std = (Student *) student;
+
+        //接收用户的选择
+        int select = 0;
+
+        cin >> select;
+
+
+        if (select == 1) { //申请预约
+
+            std->applyOrder();//申请预约
+        } else if (select == 2) {//查看自身预约
+
+            std->searchMyOrder();
+        } else if (select == 3) {//查看所有预约
+
+            std->searchAllOrder();
+        } else if (select == 4) {//取消预约
+
+            std->cancelOrder();
+        } else if (select == 0) {//取消预约
+
+            cout << "注销成功!" << endl;
+
+            delete student;
+        }
+    }
+
+}
+
 void loginIn(string fileName, int type) {
 
     Identity *person = NULL;
@@ -114,6 +151,8 @@ void loginIn(string fileName, int type) {
 //                system("pause");
 //
 //                system("cls");
+
+                studentMenu(person);
                 return;
             }
 
